@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <h1>DOM</h1>
+    <ul>
+      <li class="list">DOM이란?</li>
+      <li class="list">DOM의 사용법</li>
+      <li class="list">DOM의 소개와 사용법</li>
+    </ul>
+    <button id="nojs">JS싫어!</button>
+  </div>
+  <script>
+    // DOM이 어떻게 생겼는지 확인해보자
+    console.dir(document);
+    // document는 HTML문서 전체를 의미한다.
+    // 특정 dom을 선택하는 방법
+    // 1. document.getElementById('id명')
+    const nojsDOM = document.getElementById('nojs');
+    console.log(nojsDOM);
+    // 2. document.getElementsByClassName('class명')
+    const listDOM = document.getElementsByClassName('list');
+    console.log(listDOM);
+    // 3. document.getElementsByTagName('태그명')
+    const h1DOM = document.getElementsByTagName('h1');
+    console.log(h1DOM)
+    // 4. document.querySelector('선택자')
+    const nojsDOM2 = document.querySelector('#nojs');
+    console.log(nojsDOM2);
+  </script>
+</body>
+</html>
+<!-- 이벤트의 정의와 처리
+이벤트 객체와 이벤트 버블링 -->
