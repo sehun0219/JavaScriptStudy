@@ -41,7 +41,7 @@ test3(); // 1
 function addMaker(num) {
   return function (num2) {
     return num + num2;
-  }
+  };
 }
 
 const add5 = addMaker(5);
@@ -51,3 +51,5 @@ add10(10); // 20
 // functional programming
 // 객체지향 프로그래밍
 // 선언적 프로그래밍
+
+
