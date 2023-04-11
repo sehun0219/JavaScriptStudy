@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 1. DOM 추가하기
+    // 1.1. createElement()
+    const div = document.createElement('div');
+    console.log(div);
+    // 1.2. createTextNode()
+    const text = document.createTextNode('hello1');
+    // 1.3. appendChild()
+    div.appendChild(text);
+    console.log(div);
+    // 화면에 그리기
+    // document.body.appendChild(div);
+    const body = document.querySelector('body');
+    body.appendChild(div);
+    // 2. DOM 삭제하기
+    // 2.1. removeChild()
+    // body.removeChild(div);
+
+    // 3. DOM 교체하기
+    // 3.1. replaceChild()
+    const h1 = document.createElement('h1');
+    const h1Text = document.createTextNode('hello2');
+    h1.appendChild(h1Text);
+    body.replaceChild(h1, div);
+  </script>
+</body>
+</html>

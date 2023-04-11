@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 엔터를 누르면 검색이 되어야 한다. -->
+    <!-- 검색어를 저장해야한다. -->
+    <h1>Google</h1>
+    <input id="search-input" type="text" />
+    <script>
+        let inputText = "";
+        const googleSearchUrl = 'https://www.google.com/search?q=';
+        const inputDom = document.getElementById("search-input");
+        console.log(inputDom);
+        inputDom.addEventListener("input", (e) => {
+            inputText = e.target.value;
+        });
+        inputDom.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+              // 쿼리스트링
+              console.log(`${googleSearchUrl}${inputText}`);
+              // 자바스크립트로 페이지 이동을 하는 방법
+              // 브라우저 내장 객체) location navigator history screen document
+              // 1. location.href
+              location.href = `${googleSearchUrl}${inputText}`;
+              // 2. location.assign
+              // location.assing 은 href와 같은 기능을 한다.
+              // location.assign(`${googleSearchUrl}${inputText}`);
+              // 3. location.replace
+              // location.replace 는 현재 페이지를 새로운 페이지로 대체한다.
+              // location.replace(`${googleSearchUrl}${inputText}`);
+              // window.open(`${googleSearchUrl}${inputText}`);
+              // 유튜브도 가능하다.
+            }
+        });
+
+    </script>
+</body>
+
+</html>

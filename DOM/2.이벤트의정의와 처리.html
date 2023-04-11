@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <input id="change_input_box" type="text"/>
+  <button id="click_button">Hello</button>
+  <script>
+    let inputText = '';
+    const buttonDom = document.getElementById('click_button');
+    // ~을 할때마다 ~을 해라
+    // 첫번째 파라미터 : 이벤트의 종류
+    // 두번째 파라미터 : 이벤트가 발생했을 때 실행할 함수
+    
+    // 함수의 매개변수
+    buttonDom.addEventListener('click', () => {
+      console.log(inputText);
+    })
+    // ---------
+    // 인풋이 변경될때마다 console.log("hello") 를 실행하라
+    // input
+    const inputDom = document.getElementById('change_input_box');
+    console.log(inputDom);
+
+    inputDom.addEventListener('input', (e) =>{
+        inputText = e.target.value;
+    })
+  </script>
+</body>
+</html>
