@@ -7,7 +7,7 @@ class Person {
 
   taxCalcToUsd() {
     return this.tax * 0.00084;
-  };
+  }
 
   taxCalcToKr() {
     return this.tax * 1.1;

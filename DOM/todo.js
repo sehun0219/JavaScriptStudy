@@ -2,8 +2,11 @@
 const inputDom = document.getElementById("todo-input");
 const buttonDom = document.getElementById("todo-button");
 const todoListDom = document.getElementById("todo-list");
+
 // 할 일 텍스트 및 할 일 목록 초기화
 let todoText = "";
+// or 의 특징은 왼쪽이 false일때만 오른쪽을 실행한다.
+// typescript를 배울껀데 왜 배우냐면
 const todoList = JSON.parse(window.sessionStorage.getItem("todoList")) || [];
 
 // 다음 할 일의 ID 값을 설정
@@ -26,25 +29,24 @@ const resetTextInput = () => {
 const renderTodoList = () => {
   todoListDom.innerHTML = "";
   // 할 일 목록을 담고 있는 요소의 내용을 비우는 코드. 이렇게 하면 이전 목록이 지워지고 새로운 목록이 추가될 때 깔끔하게 보임.
-  // todoList.forEach((todo) => {
-  //   const todoItemDom = createdTodoItemDom(todo);
-  //   todoListDom.appendChild(todoItemDom);
-  // });
   for (let i = 0; todoList.length > i; i++) {
     const todoItemDom = createdTodoItemDom(todoList[i]);
     todoListDom.appendChild(todoItemDom);
   }
 };
+
 // 각 할 일을 나타내는 DOM 요소를 생성하는 함수 (완료 처리 및 삭제 기능 포함)
 const createdTodoItemDom = ({ isDone, text, id }) => {
   const todoWrapDom = document.createElement("div");
   const todoTextDom = document.createElement("span");
   const todoCheckDom = document.createElement("input");
   const todoDeleteButton = document.createElement("button");
+
   todoDeleteButton.innerText = "삭제";
   todoCheckDom.type = "checkbox";
   todoCheckDom.checked = isDone;
   todoTextDom.innerText = text;
+
   todoCheckDom.addEventListener("click", () => {
     for (let i = 0; todoList.length > i; i++) {
       if (todoList[i].id === id) {
@@ -54,9 +56,12 @@ const createdTodoItemDom = ({ isDone, text, id }) => {
     saveTodoList();
     renderTodoList();
   });
+
   todoDeleteButton.addEventListener("click", () => {
     // 특정 id로 필터링 한뒤
     // todoList에 업데이트 한다.
+    // 3개인데 2번째꺼를 뺀나머지를 다시 랜더.
+
     const filterTodoList = todoList.filter((todo) => todo.id !== id); // todo.id가 id와 같지 않은것만 필터링
     // 인즉 삭제를 한다.
     todoList.splice(0, todoList.length, ...filterTodoList);
@@ -64,9 +69,10 @@ const createdTodoItemDom = ({ isDone, text, id }) => {
     renderTodoList();
   });
 
-  todoWrapDom.appendChild(todoDeleteButton);
   todoWrapDom.appendChild(todoCheckDom);
   todoWrapDom.appendChild(todoTextDom);
+  todoWrapDom.appendChild(todoDeleteButton);
+
   return todoWrapDom;
 };
 // 할 일을 추가하는 함수
@@ -78,7 +84,7 @@ const addTodo = () => {
   saveTodoList();
 };
 
-// 입력된 할 일 텍스트를 변경하는 함수
+// input을 바꿔주는 함수
 const changeTodoText = (event) => {
   todoText = event.target.value;
 };
